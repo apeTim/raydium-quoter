@@ -1,0 +1,28 @@
+{
+  "name": "raydium-launchpad-quote",
+  "version": "1.0.0",
+  "description": "Raydium Launchpad quote calculator with minimal on-chain requests",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "keywords": ["raydium", "solana", "launchpad", "bonding-curve", "quote"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@raydium-io/raydium-sdk-v2": "0.1.111-alpha",
+    "@solana/web3.js": "^1.98.0",
+    "bn.js": "^5.2.1",
+    "decimal.js-light": "^2.5.1"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.6",
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
