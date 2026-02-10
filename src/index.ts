@@ -6,6 +6,7 @@ import {
   QuoteResult,
   SwapDirection,
   FetchPoolOptions,
+  BondingCurveInfo,
 } from "./types";
 import {
   fetchPoolData,
@@ -21,6 +22,11 @@ import {
   toRawAmount,
   toHumanAmount,
 } from "./quoteCalculator";
+import {
+  fetchBondingCurveInfo,
+  fetchLaunchpadPoolAccount,
+  fetchLaunchpadCurveType,
+} from "./bondingCurveFetcher";
 
 export * from "./types";
 
@@ -38,6 +44,12 @@ export {
   calculateMultipleQuotes,
   toRawAmount,
   toHumanAmount,
+};
+
+export {
+  fetchBondingCurveInfo,
+  fetchLaunchpadPoolAccount,
+  fetchLaunchpadCurveType,
 };
 
 export class LaunchpadQuoteCalculator {
@@ -148,6 +160,10 @@ export class LaunchpadQuoteCalculator {
       tokenReserve: toHumanAmount(poolData.baseReserve, poolData.mintA.decimals),
       solReserve: toHumanAmount(poolData.quoteReserve, poolData.mintB.decimals),
     };
+  }
+
+  async getBondingCurveInfo(): Promise<BondingCurveInfo> {
+    return fetchBondingCurveInfo(this.connection, this.poolId);
   }
 
   clearCache(): void {
